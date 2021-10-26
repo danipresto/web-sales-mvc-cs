@@ -73,7 +73,7 @@ namespace WebSalesMVC5.Controllers
                 return NotFound();
             }
 
-            var department = await _context.Department.FindAsync(id);
+          //  var department = await _context.Department.FindAsync(id);
             if (department == null)
             {
                 return NotFound();
