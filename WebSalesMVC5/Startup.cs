@@ -29,14 +29,17 @@ namespace WebSalesMVC5
 
             services.AddDbContext<WebSalesMVC5Context>(options =>
                     options.UseNpgsql(Configuration.GetConnectionString("WebSalesMVC5Context"),builder => builder.MigrationsAssembly("WebSalesMVC5")));
+
+            services.AddScoped<SeedingService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, SeedingService seedingService)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                seedingService.Seed();
             }
             else
             {
