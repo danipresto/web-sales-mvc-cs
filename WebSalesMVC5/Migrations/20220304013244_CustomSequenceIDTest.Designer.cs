@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using WebSalesMVC5.Data;
@@ -9,9 +10,10 @@ using WebSalesMVC5.Data;
 namespace WebSalesMVC5.Migrations
 {
     [DbContext(typeof(WebSalesMVC5Context))]
-    partial class WebSalesMVC5ContextModelSnapshot : ModelSnapshot
+    [Migration("20220304013244_CustomSequenceIDTest")]
+    partial class CustomSequenceIDTest
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

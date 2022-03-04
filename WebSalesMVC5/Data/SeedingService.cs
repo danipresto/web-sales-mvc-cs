@@ -26,7 +26,7 @@ namespace WebSalesMVC5.Data
             Department d4 = new Department(4, "Furniture");
             Department d5 = new Department(5, "Software");
 
-            Seller s1 = new Seller(1, "Juniper Lee", "juni@bol.com", new DateTime(1997, 3, 29), 1400.0, d1);
+            Seller s1 = new Seller(1,"Juniper Lee", "juni@bol.com", new DateTime(1997, 3, 29), 1400.0, d1);
             Seller s2 = new Seller(2, "Michel Leys", "micheleys@bol.com", new DateTime(1999, 7, 14), 1300.0, d2);
             Seller s3 = new Seller(3, "John Whatsapp", "jonwpp@bol.com", new DateTime(1992, 4, 20), 1800.0, d4);
             Seller s4 = new Seller(4, "Poil Manero", "pomel@bol.com", new DateTime(1996, 2, 15), 1700.0, d4);

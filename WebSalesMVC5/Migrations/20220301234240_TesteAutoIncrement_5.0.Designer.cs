@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using WebSalesMVC5.Data;
@@ -9,9 +10,10 @@ using WebSalesMVC5.Data;
 namespace WebSalesMVC5.Migrations
 {
     [DbContext(typeof(WebSalesMVC5Context))]
-    partial class WebSalesMVC5ContextModelSnapshot : ModelSnapshot
+    [Migration("20220301234240_TesteAutoIncrement_5.0")]
+    partial class TesteAutoIncrement_50
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -65,7 +67,6 @@ namespace WebSalesMVC5.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
-                        .HasIdentityOptions(7L, null, null, null, null, null)
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                     b.Property<DateTime>("BirthDate")

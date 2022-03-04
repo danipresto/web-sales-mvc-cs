@@ -1,46 +1,51 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 
 namespace WebSalesMVC5.Models
 {
     public class Seller
     {
+        
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
         public DateTime BirthDate { get; set; }
         public double Salary { get; set; }
         public Department Department { get; set; }
-        public ICollection<SalesRecord> Sales { get; set; } = new List<SalesRecord>();
         public int DepartmentId { get; set; }
+        public ICollection<SalesRecord> Sales { get; set; } = new List<SalesRecord>();
 
         public Seller()
         {
-
         }
-        public Seller(int id, string name, string email, DateTime birthDate, double salary, Department department)
+
+        public Seller(int id, string name, string email, DateTime birthDate, double baseSalary, Department department)
         {
             Id = id;
             Name = name;
             Email = email;
             BirthDate = birthDate;
-            Salary = salary;
+            Salary = baseSalary;
             Department = department;
         }
 
-        public void AddSale(SalesRecord salesrecord)
+        public void AddSales(SalesRecord sr)
         {
-            Sales.Add(salesrecord);
+            Sales.Add(sr);
         }
-        public void RemoveSales(SalesRecord salesrecord)
+
+        public void RemoveSales(SalesRecord sr)
         {
-            Sales.Remove(salesrecord);
+            Sales.Remove(sr);
         }
+
         public double TotalSales(DateTime initial, DateTime final)
         {
-            return Sales.Where(salesrecord => salesrecord.Date >= initial && salesrecord.Date <= final).Sum(salesrecord => salesrecord.Amount);
+            return Sales.Where(sr => sr.Date >= initial && sr.Date <= final).Sum(sr => sr.Amount);
         }
-        
-}
+    }
 }

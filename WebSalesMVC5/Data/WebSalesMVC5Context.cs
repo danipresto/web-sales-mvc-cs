@@ -13,9 +13,15 @@ namespace WebSalesMVC5.Data
             : base(options)
         {
         }
-
-        public DbSet<WebSalesMVC5.Models.Department> Department { get; set; }
+       
+        public DbSet<Department> Department { get; set; }
         public DbSet<Seller> Seller { get; set; }
         public DbSet<SalesRecord> SalesRecord { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)=> modelBuilder.Entity<Seller>().Property(b => b.Id).HasIdentityOptions(startValue: 7); // Seeding Service inseriu até o ID 6
+
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+            => optionsBuilder.UseNpgsql("Server=localhost;Database=websalesmvcdb;Username=developer;Password=root");
     }
 }
