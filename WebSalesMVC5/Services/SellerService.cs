@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using WebSalesMVC5.Data;
 using WebSalesMVC5.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace WebSalesMVC5.Services
 {
@@ -27,7 +28,8 @@ namespace WebSalesMVC5.Services
         }
 
         public Seller FindByID(int Id){
-            return _context.Seller.FirstOrDefault(obj => obj.Id == Id);
+            return _context.Seller.Include(obj => obj.Department).FirstOrDefault(obj => obj.Id == Id);
+
         }
 
         public void Remove(int Id) {
