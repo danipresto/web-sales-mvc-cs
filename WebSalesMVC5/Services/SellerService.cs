@@ -25,5 +25,17 @@ namespace WebSalesMVC5.Services
             _context.Add(seller);
             _context.SaveChanges();
         }
+
+        public Seller FindByID(int Id){
+            return _context.Seller.FirstOrDefault(obj => obj.Id == Id);
+        }
+
+        public void Remove(int Id) {
+            var obj = _context.Seller.Find(Id);
+            _context.Seller.Remove(obj);
+            _context.SaveChanges();
+
+        }
     }
+
 }
