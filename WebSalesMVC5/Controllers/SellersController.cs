@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using WebSalesMVC5.Models;
 using WebSalesMVC5.Models.ViewModels;
 using WebSalesMVC5.Services;
+using WebSalesMVC5.Services.Exceptions;
 
 namespace WebSalesMVC5.Controllers
 {
@@ -78,5 +79,23 @@ namespace WebSalesMVC5.Controllers
             }
             return View(obj);
         }
+        public IActionResult Edit(int? id)
+        {
+            if(id==null)
+            {
+                return NotFound();
+            }
+            var obj = _sellerService.FindByID(id.Value);
+            if (obj == null) 
+            {
+                return NotFound();
+            }
+
+            List<Department> departments = _departmentService.FindAll();
+            SellerFormViewModel viewModel = new SellerFormViewModel {Seller = obj, Departments = departments};
+            return View(viewModel);
+
+        }
+
     }
 }
